@@ -7,11 +7,14 @@ from time import sleep
 from flask import Flask, jsonify, request, render_template, send_from_directory, Response
 from PIL import Image
 from app.camera import VideoCamera
+import time
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 file_handler = logging.FileHandler('server.log')
 app.logger.addHandler(file_handler)
 app.logger.setLevel(logging.INFO)
+CORS(app)
 
 PROJECT_HOME = os.path.dirname(os.path.realpath(__file__))
 UPLOAD_FOLDER = '{}/dataset/'.format(PROJECT_HOME)
@@ -61,22 +64,34 @@ def upload():
     if request.method == 'POST' and request.files['image']:
         nrp = request.form['nrp']
         img = request.files['image']
+        t = time.time()
+
+        face_detector = cv2.CascadeClassifier('app/haarcascade_frontalface_default.xml')
+
         # img_name = secure_filename(img.filename)
-        img_name = str(nrp) + "." +  img.filename.split(".")[-1]
+        img_name = str(nrp) + "-" + str(int(t * 1000)) + "." +  img.filename.split(".")[-1]
         
         create_new_folder(app.config['UPLOAD_FOLDER'])
         saved_path = os.path.join(app.config['UPLOAD_FOLDER'], img_name)
 
         file_path, file_extension = os.path.splitext(saved_path)
         
-        i = 1
-        while os.path.exists(saved_path):
-            img_name = nrp + "-" + str(i) + file_extension
-            saved_path = os.path.join(app.config['UPLOAD_FOLDER'], img_name)
-            i = i + 1
+        # i = 1
+        # while os.path.exists(saved_path):
+        #     img_name = nrp + "-" + str(i) + file_extension
+        #     saved_path = os.path.join(app.config['UPLOAD_FOLDER'], img_name)
+        #     i = i + 1
 
         app.logger.info("saving {}".format(saved_path))
+        # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         img.save(saved_path)
+
+        im_gray = cv2.imread(saved_path)
+        gray = cv2.cvtColor(im_gray, cv2.COLOR_BGR2GRAY)
+
+        faces = face_detector.detectMultiScale(gray, 1.3, 5)
+        for (x,y,w,h) in faces:
+            cv2.imwrite(saved_path, gray[y:y+h,x:x+w])
         
     return jsonify({'status': 'success', 'data': app.config['UPLOAD_FOLDER'] + img_name}), 200
 
@@ -89,9 +104,11 @@ def record_status():
     json = request.get_json()
 
     status = json['status']
+    nrp = json['nrp']
 
+    print ("NRP = " + nrp)
     if status == "true":
-        video_camera.start_record()
+        video_camera.start_record(nrp)
         return jsonify(result="started")
     else:
         video_camera.stop_record()

@@ -1,5 +1,6 @@
 var buttonRecord = document.getElementById("record");
 var buttonStop = document.getElementById("stop");
+var nrp = document.getElementById("nrp");
 
 buttonStop.disabled = true;
 
@@ -22,7 +23,7 @@ buttonRecord.onclick = function() {
     }
     xhr.open("POST", "/record_status");
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({ status: "true" }));
+    xhr.send(JSON.stringify({ status: "true", nrp: nrp.value }));
 };
 
 buttonStop.onclick = function() {

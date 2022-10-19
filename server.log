@@ -69,3 +69,89 @@ saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/12345.jpg
 saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/12345-31.jpg
 saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/12345-32.jpg
 saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/12345-33.jpg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009.jpg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1.jpeg
+Exception on /generate [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/syifandimulyanto/stiki-endgame/trainer/app/__init__.py", line 48, in generate_yml_trainer
+    faces,ids = getImagesAndLabels(DATASET_FOLDER)
+  File "/Users/syifandimulyanto/stiki-endgame/trainer/app/__init__.py", line 137, in getImagesAndLabels
+    ids.append(int(filename))
+ValueError: invalid literal for int() with base 10: 'User'
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-2.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-3.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-4.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-5.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-6.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-7.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-8.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-9.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-10.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-11.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-12.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-13.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-14.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-15.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-16.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-17.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-18.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-19.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-20.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-21.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-22.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-23.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-24.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-25.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-26.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-27.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/2342342342.png
+Exception on /upload [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/syifandimulyanto/stiki-endgame/trainer/app/__init__.py", line 72, in upload
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+TypeError: Expected cv::UMat for argument 'src'
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116008.png
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665592764443.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665592838374.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665593726310.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665593878634.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665593955246.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665594064023.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665594135684.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665594160068.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665594184756.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665594257518.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665594273551.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665594328012.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665594397135.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665594488736.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665594536318.jpeg
+saving /Users/syifandimulyanto/stiki-endgame/trainer/app/dataset/151116009-1665594597758.jpeg

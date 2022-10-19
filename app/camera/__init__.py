@@ -1,5 +1,6 @@
 import cv2
 import threading
+import time
 
 class RecordingThread (threading.Thread):
     def __init__(self, name, camera):
@@ -76,12 +77,12 @@ class VideoCamera(object):
         else:
             return None
 
-    def start_record(self):
+    def start_record(self, face_id):
         self.is_record = True
         # self.recordingThread = RecordingThread("Video Recording Thread", self.cap)
         # self.recordingThread.start()
-        print('masuk mengambil gambar')
-        while(True):
+        print('masuk mengambil gambar NRP ' + face_id)
+        while(self.is_record):
             ret, img = self.cap.read()
             # img = cv2.flip(img, -1) # flip video image vertically
             face_detector = cv2.CascadeClassifier('app/haarcascade_frontalface_default.xml')
@@ -92,18 +93,22 @@ class VideoCamera(object):
                 minNeighbors=5,
                 minSize=(30, 30)
             )
-            face_id = 899812
+            # face_id = 899812
             count = 0
+            t = time.time()
             for (x,y,w,h) in faces:
                 cv2.rectangle(img, (x,y), (x+w,y+h), (255,0,0), 2)     
                 count += 1
                 # Save the captured image into the datasets folder
-                cv2.imwrite("app/dataset/User." + str(face_id) + '.' + str(count) + ".jpg", gray[y:y+h,x:x+w])
+                cv2.imwrite("app/dataset/" + str(face_id) + '-' + str(count + int(t * 1000)) + ".jpg", gray[y:y+h,x:x+w])
 
-            if count >= 30:
+            if count >= 5:
                 self.is_record = False
+                # self.recordingThread.stop()
+                if self.recordingThread != None:
+                    self.recordingThread.stop()
                 print('selesai mengambil gambari')
-                break
+                # break
 
     def stop_record(self):
         self.is_record = False
